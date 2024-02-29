@@ -109,18 +109,23 @@ export default class SinglyLinkedList<T> {
         return undefined;
     }
     get(idx: number): T | undefined {
-        if (!this.head) return undefined;
-        if (idx === 0) return this.head.val;
-        let nodeIdx = 1;
-        let node = this.head.next;
-        while (node) {
-            if (nodeIdx === idx) {
-                return node.val;
-            }
-            node = node.next;
-            nodeIdx++;
+        // if (!this.head) return undefined;
+        // if (idx === 0) return this.head.val;
+        // let nodeIdx = 1;
+        // let node = this.head.next;
+        // while (node) {
+        //     if (nodeIdx === idx) {
+        //         return node.val;
+        //     }
+        //     node = node.next;
+        //     nodeIdx++;
+        // }
+        // return undefined;
+        let curr = this.head;
+        for (let i = 0; i < idx && curr; i++) {
+            curr = curr.next;
         }
-        return undefined;
+        return curr?.val;
     }
     removeAt(idx: number): T | undefined {
         if (!this.head || idx < 0 || idx >= this.length) return undefined;
